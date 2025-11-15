@@ -1,0 +1,50 @@
+# Gitee Go 持续集成配置文件
+# 用于自动构建和部署到 Gitee Pages
+
+name: 自动部署到Gitee Pages
+
+# 触发条件：推送到 main 分支时触发
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+      # 检出代码
+      - name: 检出代码
+        uses: actions/checkout@v2
+      
+      # 设置 Node.js 环境
+      - name: 设置 Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '18'
+          cache: 'npm'
+      
+      # 安装依赖
+      - name: 安装依赖
+        run: npm install
+      
+      # 构建项目
+      - name: 构建项目
+        run: npm run build
+      
+      # 部署到 Gitee Pages
+      - name: 部署到 Gitee Pages
+        uses: yanglbme/gitee-pages-action@main
+        with:
+          # Gitee 用户名
+          gitee-username: ${{ secrets.GITEE_USERNAME }}
+          # Gitee 密码或私人令牌
+          gitee-password: ${{ secrets.GITEE_PASSWORD }}
+          # Gitee 仓库
+          gitee-repo: ${{ secrets.GITEE_REPO }}
+          # 部署分支
+          branch: main
+          # 部署目录
+          directory: dist
+
