@@ -1,0 +1,1015 @@
+/* 全局样式 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-color: #4a90e2;
+    --secondary-color: #50c878;
+    --dark-color: #2c3e50;
+    --light-color: #f8f9fa;
+    --text-color: #333;
+    --text-light: #666;
+    --border-color: #e0e0e0;
+    --shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    --shadow-hover: 0 5px 20px rgba(0, 0, 0, 0.15);
+    --gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --gradient-secondary: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+}
+
+body {
+    font-family: 'Segoe UI', 'Microsoft YaHei', Tahoma, Arial, sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    overflow-x: hidden;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.section {
+    padding: 80px 0;
+    position: relative;
+}
+
+.bg-light {
+    background-color: var(--light-color);
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2.5em;
+    margin-bottom: 50px;
+    color: var(--dark-color);
+    position: relative;
+    padding-bottom: 20px;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: var(--gradient);
+    border-radius: 2px;
+}
+
+/* 导航栏 */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    box-shadow: var(--shadow);
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+
+.navbar.scrolled {
+    background: rgba(255, 255, 255, 0.98);
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;
+}
+
+.logo {
+    font-size: 1.5em;
+    font-weight: bold;
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: 500;
+    transition: color 0.3s ease;
+    position: relative;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--gradient);
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover {
+    color: var(--primary-color);
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 5px;
+}
+
+.hamburger span {
+    width: 25px;
+    height: 3px;
+    background: var(--dark-color);
+    transition: all 0.3s ease;
+    border-radius: 3px;
+}
+
+/* 首页 */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--gradient);
+    color: white;
+    text-align: center;
+    position: relative;
+    padding-top: 70px;
+}
+
+.hero-content {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+    max-width: 1200px;
+    padding: 0 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.hero-image {
+    flex: 0 0 auto;
+}
+
+.image-placeholder {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 80px;
+    border: 5px solid rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(10px);
+}
+
+.hero-text {
+    flex: 1;
+    min-width: 300px;
+}
+
+.hero-text h1 {
+    font-size: 3.5em;
+    margin-bottom: 10px;
+    animation: fadeInUp 1s ease;
+}
+
+.subtitle {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+    opacity: 0.9;
+    animation: fadeInUp 1s ease 0.2s backwards;
+}
+
+.description {
+    font-size: 1.1em;
+    margin-bottom: 30px;
+    opacity: 0.8;
+    animation: fadeInUp 1s ease 0.4s backwards;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    animation: fadeInUp 1s ease 0.6s backwards;
+}
+
+.btn {
+    padding: 12px 30px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.btn-primary {
+    background: white;
+    color: var(--primary-color);
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: white;
+    border: 2px solid white;
+}
+
+.btn-secondary:hover {
+    background: white;
+    color: var(--primary-color);
+    transform: translateY(-3px);
+}
+
+.scroll-down {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: bounce 2s infinite;
+}
+
+.scroll-down a {
+    color: white;
+    font-size: 2em;
+    text-decoration: none;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateX(-50%) translateY(0);
+    }
+    40% {
+        transform: translateX(-50%) translateY(-10px);
+    }
+    60% {
+        transform: translateX(-50%) translateY(-5px);
+    }
+}
+
+/* 关于我 */
+.about-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.about-card {
+    background: white;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: var(--shadow);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.about-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-hover);
+}
+
+.about-card h3 {
+    color: var(--primary-color);
+    margin-bottom: 25px;
+    font-size: 1.5em;
+}
+
+.info-grid {
+    display: grid;
+    gap: 20px;
+}
+
+.info-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.info-item i {
+    color: var(--primary-color);
+    font-size: 1.2em;
+    width: 25px;
+}
+
+.evaluation {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.tag {
+    padding: 8px 16px;
+    background: var(--gradient-secondary);
+    color: white;
+    border-radius: 20px;
+    font-size: 0.9em;
+    font-weight: 500;
+}
+
+.about-text {
+    line-height: 1.8;
+    color: var(--text-light);
+}
+
+/* 教育背景 */
+.education-content {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.education-card {
+    background: white;
+    border-radius: 15px;
+    box-shadow: var(--shadow);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.education-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-hover);
+}
+
+.education-header {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 30px;
+    background: var(--gradient);
+    color: white;
+}
+
+.education-icon {
+    font-size: 3em;
+}
+
+.education-info h3 {
+    font-size: 1.8em;
+    margin-bottom: 5px;
+}
+
+.education-detail {
+    opacity: 0.9;
+    margin-bottom: 5px;
+}
+
+.education-major {
+    font-weight: 600;
+}
+
+.education-body {
+    padding: 30px;
+}
+
+.education-time {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 25px;
+    color: var(--text-light);
+}
+
+.education-stats {
+    display: flex;
+    gap: 40px;
+    margin-bottom: 30px;
+    padding-bottom: 25px;
+    border-bottom: 2px solid var(--border-color);
+}
+
+.stat-item {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.stat-label {
+    color: var(--text-light);
+    font-size: 0.9em;
+}
+
+.stat-value {
+    font-size: 2em;
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+.core-courses h4 {
+    margin-bottom: 20px;
+    color: var(--dark-color);
+    font-size: 1.3em;
+}
+
+.courses-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 15px;
+}
+
+.course-item {
+    padding: 12px 20px;
+    background: var(--light-color);
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: transform 0.3s ease;
+}
+
+.course-item:hover {
+    transform: translateX(5px);
+}
+
+.course-item span {
+    padding: 4px 12px;
+    border-radius: 15px;
+    font-weight: 600;
+    font-size: 0.9em;
+}
+
+.grade-a span {
+    background: #50c878;
+    color: white;
+}
+
+.grade-b span {
+    background: #4a90e2;
+    color: white;
+}
+
+/* 项目经历 */
+.projects-grid {
+    display: grid;
+    gap: 40px;
+}
+
+.project-card {
+    background: white;
+    border-radius: 15px;
+    box-shadow: var(--shadow);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-hover);
+}
+
+.project-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 30px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+
+.project-icon {
+    font-size: 2.5em;
+    opacity: 0.9;
+}
+
+.project-title-section {
+    flex: 1;
+}
+
+.project-title-section h3 {
+    font-size: 1.5em;
+    margin-bottom: 15px;
+}
+
+.project-meta {
+    display: flex;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+.project-role,
+.project-date {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    opacity: 0.9;
+    font-size: 0.95em;
+}
+
+.project-body {
+    padding: 30px;
+}
+
+.project-content,
+.project-responsibilities,
+.project-achievements {
+    margin-bottom: 25px;
+}
+
+.project-content h4,
+.project-responsibilities h4,
+.project-achievements h4 {
+    color: var(--primary-color);
+    margin-bottom: 15px;
+    font-size: 1.2em;
+}
+
+.project-content p {
+    line-height: 1.8;
+    color: var(--text-light);
+}
+
+.project-responsibilities ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.project-responsibilities li {
+    padding: 10px 0;
+    padding-left: 25px;
+    position: relative;
+    color: var(--text-light);
+    line-height: 1.8;
+}
+
+.project-responsibilities li::before {
+    content: '▸';
+    position: absolute;
+    left: 0;
+    color: var(--primary-color);
+    font-weight: bold;
+}
+
+.achievement-stats {
+    display: flex;
+    gap: 30px;
+    margin: 20px 0;
+    flex-wrap: wrap;
+}
+
+.achievement-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 20px;
+    background: var(--light-color);
+    border-radius: 10px;
+    flex: 1;
+    min-width: 200px;
+}
+
+.achievement-item i {
+    font-size: 2em;
+    color: var(--primary-color);
+}
+
+.achievement-value {
+    display: block;
+    font-size: 1.8em;
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+.achievement-label {
+    display: block;
+    color: var(--text-light);
+    font-size: 0.9em;
+}
+
+.project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border-color);
+}
+
+/* 实训经历 */
+.internship-card {
+    background: white;
+    border-radius: 15px;
+    box-shadow: var(--shadow);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.internship-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-hover);
+}
+
+.internship-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 30px;
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    color: white;
+}
+
+.internship-icon {
+    font-size: 2.5em;
+    opacity: 0.9;
+}
+
+.internship-title-section {
+    flex: 1;
+}
+
+.internship-title-section h3 {
+    font-size: 1.5em;
+    margin-bottom: 15px;
+}
+
+.internship-meta {
+    display: flex;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+.internship-role,
+.internship-date {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    opacity: 0.9;
+    font-size: 0.95em;
+}
+
+.internship-body {
+    padding: 30px;
+}
+
+.internship-content,
+.internship-achievements {
+    margin-bottom: 25px;
+}
+
+.internship-content h4,
+.internship-achievements h4 {
+    color: var(--primary-color);
+    margin-bottom: 15px;
+    font-size: 1.2em;
+}
+
+.internship-content p {
+    line-height: 1.8;
+    color: var(--text-light);
+    margin-bottom: 20px;
+}
+
+.ml-models {
+    margin-top: 25px;
+    padding: 20px;
+    background: var(--light-color);
+    border-radius: 10px;
+}
+
+.ml-models h5 {
+    color: var(--dark-color);
+    margin-bottom: 15px;
+    font-size: 1.1em;
+}
+
+.models-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+}
+
+.model-category h6 {
+    color: var(--text-color);
+    margin-bottom: 10px;
+    font-size: 1em;
+}
+
+.model-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.model-tag {
+    padding: 5px 12px;
+    background: white;
+    border: 2px solid var(--primary-color);
+    color: var(--primary-color);
+    border-radius: 15px;
+    font-size: 0.85em;
+    font-weight: 500;
+}
+
+.internship-achievements ul {
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 20px;
+}
+
+.internship-achievements li {
+    padding: 10px 0;
+    padding-left: 25px;
+    position: relative;
+    color: var(--text-light);
+    line-height: 1.8;
+}
+
+.internship-achievements li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--secondary-color);
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+.internship-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border-color);
+}
+
+/* 荣誉获奖 */
+.honors-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.honor-card {
+    background: white;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: var(--shadow);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.honor-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: var(--gradient);
+}
+
+.honor-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-hover);
+}
+
+.honor-icon {
+    font-size: 3em;
+    color: #ffd700;
+    margin-bottom: 20px;
+}
+
+.honor-card h3 {
+    color: var(--dark-color);
+    margin-bottom: 10px;
+    font-size: 1.3em;
+}
+
+.honor-level {
+    color: var(--primary-color);
+    font-weight: 600;
+    margin-bottom: 10px;
+    font-size: 1.1em;
+}
+
+.honor-date {
+    color: var(--text-light);
+    margin-bottom: 5px;
+}
+
+.honor-note {
+    color: var(--text-light);
+    font-size: 0.9em;
+    font-style: italic;
+}
+
+/* 联系方式 */
+.contact-content {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.contact-card {
+    background: white;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: var(--shadow);
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 25px;
+    margin-bottom: 20px;
+    background: var(--light-color);
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+}
+
+.contact-item:hover {
+    transform: translateX(10px);
+}
+
+.contact-item:last-child {
+    margin-bottom: 0;
+}
+
+.contact-item i {
+    font-size: 2em;
+    color: var(--primary-color);
+    width: 50px;
+    text-align: center;
+}
+
+.contact-item h4 {
+    color: var(--dark-color);
+    margin-bottom: 5px;
+}
+
+.contact-item p {
+    color: var(--text-light);
+    font-size: 1.1em;
+}
+
+/* 页脚 */
+.footer {
+    background: var(--dark-color);
+    color: white;
+    text-align: center;
+    padding: 30px 0;
+}
+
+.footer-note {
+    margin-top: 10px;
+    opacity: 0.8;
+}
+
+.footer-note i {
+    color: #e74c3c;
+    margin: 0 5px;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .nav-menu {
+        position: fixed;
+        left: -100%;
+        top: 70px;
+        flex-direction: column;
+        background: white;
+        width: 100%;
+        text-align: center;
+        transition: 0.3s;
+        box-shadow: var(--shadow);
+        padding: 20px 0;
+    }
+
+    .nav-menu.active {
+        left: 0;
+    }
+
+    .hamburger {
+        display: flex;
+    }
+
+    .hamburger.active span:nth-child(1) {
+        transform: rotate(45deg) translate(8px, 8px);
+    }
+
+    .hamburger.active span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .hamburger.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(7px, -7px);
+    }
+
+    .hero-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .hero-text h1 {
+        font-size: 2.5em;
+    }
+
+    .section-title {
+        font-size: 2em;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .education-header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .education-stats {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .project-header,
+    .internship-header {
+        flex-direction: column;
+    }
+
+    .courses-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .achievement-stats {
+        flex-direction: column;
+    }
+
+    .models-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-text h1 {
+        font-size: 2em;
+    }
+
+    .subtitle {
+        font-size: 1.2em;
+    }
+
+    .section-title {
+        font-size: 1.8em;
+    }
+
+    .about-card,
+    .contact-card {
+        padding: 25px;
+    }
+
+    .project-header,
+    .internship-header {
+        padding: 20px;
+    }
+
+    .project-body,
+    .internship-body {
+        padding: 20px;
+    }
+}
+
