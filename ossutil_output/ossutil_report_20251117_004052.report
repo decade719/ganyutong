@@ -1,0 +1,1 @@
+# E:\ossutil-v1.7.19-windows-amd64\ossutil-v1.7.19-windows-amd64\ossutil.exe cp -r dist/ oss://ganyutong/ --update

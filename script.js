@@ -1,113 +1,102 @@
-// 导航栏滚动效果
-window.addEventListener('scroll', function() {
-    const navbar = document.getElementById('navbar');
-    if (window.scrollY > 50) {
-        navbar.classList.add('scrolled');
+// 初始化打字机效果
+(function () {
+  const typingTexts = [
+    '软件工程师',
+    '机器学习爱好者',
+    '全栈开发者',
+    '科研探索者',
+    '阿森纳铁杆球迷',
+    '漫威电影爱好者',
+    '技术创新追求者'
+  ];
+  const el = document.querySelector('.typing-text');
+  if (!el) return;
+  let textIdx = 0;
+  let charIdx = 0;
+  let deleting = false;
+
+  function tick() {
+    const text = typingTexts[textIdx];
+    if (deleting) {
+      charIdx--;
+      el.textContent = text.substring(0, charIdx);
     } else {
-        navbar.classList.remove('scrolled');
+      charIdx++;
+      el.textContent = text.substring(0, charIdx);
     }
-});
 
-// 移动端菜单切换
-const hamburger = document.getElementById('hamburger');
-const navMenu = document.getElementById('nav-menu');
-const navLinks = document.querySelectorAll('.nav-link');
+    let delay = deleting ? 50 : 100;
 
-hamburger.addEventListener('click', function() {
-    hamburger.classList.toggle('active');
-    navMenu.classList.toggle('active');
-});
+    if (!deleting && charIdx === text.length) {
+      delay = 2000;
+      deleting = true;
+    } else if (deleting && charIdx === 0) {
+      deleting = false;
+      textIdx = (textIdx + 1) % typingTexts.length;
+      delay = 500;
+    }
+    setTimeout(tick, delay);
+  }
 
-// 点击导航链接后关闭菜单
-navLinks.forEach(link => {
-    link.addEventListener('click', function() {
-        hamburger.classList.remove('active');
-        navMenu.classList.remove('active');
+  setTimeout(tick, 500);
+})();
+
+// 初始化粒子背景（如果可用）
+(function () {
+  if (window.particlesJS) {
+    window.particlesJS('particles-js', {
+      particles: {
+        number: { value: 80, density: { enable: true, value_area: 800 } },
+        color: { value: '#667eea' },
+        shape: { type: 'circle' },
+        opacity: { value: 0.5 },
+        size: { value: 3, random: true },
+        line_linked: { enable: true, distance: 150, color: '#667eea', opacity: 0.4, width: 1 },
+        move: { enable: true, speed: 2, out_mode: 'out' }
+      },
+      interactivity: {
+        detect_on: 'canvas',
+        events: { onhover: { enable: true, mode: 'repulse' }, onclick: { enable: true, mode: 'push' }, resize: true },
+        modes: { repulse: { distance: 100, duration: 0.4 }, push: { particles_nb: 4 } }
+      },
+      retina_detect: true
     });
-});
+  }
+})();
 
 // 平滑滚动
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            const offsetTop = target.offsetTop - 70;
-            window.scrollTo({
-                top: offsetTop,
-                behavior: 'smooth'
-            });
-        }
-    });
-});
+(function () {
+  document.addEventListener('click', function (e) {
+    const a = e.target.closest('a[href^="#"]');
+    if (!a) return;
+    const id = a.getAttribute('href');
+    const target = document.querySelector(id);
+    if (!target) return;
+    e.preventDefault();
+    const offset = 70;
+    const top = target.getBoundingClientRect().top + window.scrollY - offset;
+    window.scrollTo({ top, behavior: 'smooth' });
+  });
+})();
 
 // 滚动动画
-const observerOptions = {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
-};
+(function () {
+  const animatedElements = document.querySelectorAll('.section-title, .card');
 
-const observer = new IntersectionObserver(function(entries) {
+  if (!animatedElements.length) return;
+
+  const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.style.opacity = '1';
-            entry.target.style.transform = 'translateY(0)';
-        }
+      if (entry.isIntersecting) {
+        entry.target.classList.add('animate');
+        observer.unobserve(entry.target);
+      }
     });
-}, observerOptions);
+  }, {
+    threshold: 0.1
+  });
 
-// 观察所有卡片元素
-document.addEventListener('DOMContentLoaded', function() {
-    const cards = document.querySelectorAll('.about-card, .education-card, .project-card, .internship-card, .honor-card, .contact-card');
-    cards.forEach(card => {
-        card.style.opacity = '0';
-        card.style.transform = 'translateY(30px)';
-        card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-        observer.observe(card);
-    });
-});
-
-// 导航链接高亮
-const sections = document.querySelectorAll('.section, .hero');
-const navLinksHighlight = document.querySelectorAll('.nav-link');
-
-window.addEventListener('scroll', function() {
-    let current = '';
-    sections.forEach(section => {
-        const sectionTop = section.offsetTop;
-        const sectionHeight = section.clientHeight;
-        if (pageYOffset >= sectionTop - 200) {
-            current = section.getAttribute('id');
-        }
-    });
-
-    navLinksHighlight.forEach(link => {
-        link.classList.remove('active');
-        if (link.getAttribute('href') === `#${current}`) {
-            link.classList.add('active');
-        }
-    });
-});
-
-// 添加复制邮箱功能
-document.addEventListener('DOMContentLoaded', function() {
-    const emailElement = document.querySelector('.contact-item p');
-    if (emailElement && emailElement.textContent.includes('@')) {
-        emailElement.style.cursor = 'pointer';
-        emailElement.addEventListener('click', function() {
-            const email = this.textContent.trim();
-            navigator.clipboard.writeText(email).then(function() {
-                const originalText = emailElement.textContent;
-                emailElement.textContent = '已复制到剪贴板！';
-                emailElement.style.color = 'var(--secondary-color)';
-                setTimeout(function() {
-                    emailElement.textContent = originalText;
-                    emailElement.style.color = '';
-                }, 2000);
-            }).catch(function(err) {
-                console.error('复制失败:', err);
-            });
-        });
-    }
-});
-
+  animatedElements.forEach(el => {
+    observer.observe(el);
+  });
+})();

@@ -5,12 +5,181 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>甘语桐 - 个人网站</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
     <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
 </head>
 <body>
-    <div id="app"></div>
-    <script type="module" src="/src/main.js"></script>
+
+    <div id="app">
+        <!-- Navigation -->
+        <header class="site-header">
+            <nav class="navbar container">
+                <a class="brand" href="#home">
+                    <span class="brand-mark">YT</span>
+                    <span class="brand-text">Gan</span>
+                </a>
+                <div class="nav-links">
+                    <a href="#home">主页</a>
+                    <a href="#insights">兴趣</a>
+                    <a href="#contact">联系</a>
+                </div>
+                <a class="resume-btn" href="mailto:15233530603@163.com">
+                    <i class="fas fa-paper-plane"></i>
+                    发送邮件
+                </a>
+            </nav>
+        </header>
+
+        <!-- Hero Section -->
+        <section class="hero section" id="home">
+            <div class="particles-bg" id="particles-js"></div>
+            <div class="hero-orbs">
+                <div class="orb orb-left"></div>
+                <div class="orb orb-right"></div>
+            </div>
+            <div class="hero-content">
+                <div class="hero-text">
+                    <div class="greeting text-content">
+                        <span class="wave">👋</span> 你好，我是
+                    </div>
+                    <h1 class="hero-name text-content">
+                        <span class="name-text">YT. Gan</span>
+                        <span class="cursor-blink">|</span>
+                    </h1>
+                    <p class="hero-subtitle text-content">
+                        <span class="typing-text"></span>
+                    </p>
+                    <p class="hero-description text-content">
+                        热爱编程与科研，致力于用技术解决实际问题 ⚡ 阿森纳铁杆球迷 💎 漫威电影爱好者
+                    </p>
+                    <div class="hero-badges text-content">
+                        <span class="pill">全栈研发</span>
+                        <span class="pill">科研竞赛</span>
+                        <span class="pill">创意设计</span>
+                    </div>
+                    <div class="hero-buttons">
+                        <a href="#projects" class="btn btn-primary button">
+                            <i class="fas fa-rocket"></i>
+                            <span class="small-text">查看项目</span>
+                        </a>
+                        <a href="#contact" class="btn btn-secondary button">
+                            <i class="fas fa-envelope"></i>
+                            <span class="small-text">联系我</span>
+                        </a>
+                    </div>
+                    <div class="social-links text-content">
+                        <a href="mailto:15233530603@163.com" class="social-link">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                    </div>
+                    <div class="hero-stats">
+                        <div class="stat-card">
+                            <span class="stat-label">项目经验</span>
+                            <span class="stat-value">12+</span>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-label">科研竞赛</span>
+                            <span class="stat-value">6项</span>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-label">合作伙伴</span>
+                            <span class="stat-value">8家</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <div class="image-container">
+                        <div class="image-wrapper">
+                            <div class="profile-image">
+                                <i class="fas fa-user"></i>
+                            </div>
+                            <div class="floating-elements">
+                                <div class="floating-element el1">
+                                    <i class="fab fa-vue"></i>
+                                </div>
+                                <div class="floating-element el2">
+                                    <i class="fab fa-python"></i>
+                                </div>
+                                <div class="floating-element el3">
+                                    <i class="fas fa-code"></i>
+                                </div>
+                                <div class="floating-element el4">
+                                    <i class="fas fa-brain"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="scroll-indicator">
+                <div class="mouse">
+                    <div class="wheel"></div>
+                </div>
+                <div class="arrow">
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+            </div>
+        </section>
+
+                <!-- Interests & Insights Section -->
+        <section class="interests-section section" id="insights">
+            <div class="container">
+                <h2 class="section-title">
+                    <span class="title-text">兴趣与见解</span>
+                    <span class="title-line"></span>
+                </h2>
+                <div class="insights-grid">
+                    <!-- Movie Insight Card -->
+                    <div class="insight-card card">
+                        <div class="card-icon">
+                            <i class="fas fa-film"></i>
+                        </div>
+                        <h3>电影简介：信条 (Tenet)</h3>
+                        <p class="insight-text">
+                            《信条》是克里斯托弗·诺兰执导的一部科幻动作惊悚片。影片的核心概念是“时间逆转”，物体和人的熵可以反转，导致他们可以逆着时间移动。这不仅仅是时间旅行，而是在同一时间线上，顺时和逆时两种状态并存。影片通过复杂的叙事结构和视觉特效，探讨了自由意志与宿命论的哲学主题，为观众带来了一场烧脑的视听盛宴。
+                        </p>
+                        <div class="tags">
+                            <span class="tag">科幻</span>
+                            <span class="tag">诺兰</span>
+                            <span class="tag">时间逆转</span>
+                        </div>
+                    </div>
+
+                    <!-- Embodied AI Insight Card -->
+                    <div class="insight-card card">
+                        <div class="card-icon">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <h3>对具身智能的理解</h3>
+                        <p class="insight-text">
+                            具身智能（Embodied AI）是指能够通过物理身体与环境进行交互，并通过这种交互来学习和理解世界的智能体。它强调智能离不开身体的感知和行动。与传统AI不同，具身智能不仅处理抽象数据，还能在真实世界中执行任务，如导航、抓取物体等。我认为，这是通往通用人工智能（AGI）的关键一步，因为它让AI能够像人类一样，通过与环境的不断互动来积累经验和知识。
+                        </p>
+                        <div class="tags">
+                            <span class="tag">人工智能</span>
+                            <span class="tag">机器人学</span>
+                            <span class="tag">AGI</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="insights-highlight card">
+                    <div>
+                        <p class="highlight-title">近期关注：具身智能跨模态协同</p>
+                        <p class="highlight-desc">尝试将机器人感知、语言与行动策略统一到一个轻量级框架中，利用自监督数据构建可迁移的技能库。</p>
+                    </div>
+                    <div class="highlight-tags">
+                        <span>多模态</span>
+                        <span>实时控制</span>
+                        <span>人机交互</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Other sections will be added here -->
+
+        <!-- Footer will go here -->
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
-
-
